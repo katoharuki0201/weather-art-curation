@@ -84,6 +84,29 @@ def test_met_isolates_missing_and_invalid_detail_records(monkeypatch):
     assert result.detail_failures == {"http_404": 1, "invalid_data": 1}
 
 
+def test_met_searches_in_500_id_pages_with_delay(monkeypatch):
+    first_page = list(range(1, 501))
+    FakeClient.responses = [
+        {"total": 501, "objectIDs": first_page},
+        {"total": 501, "objectIDs": [501]},
+        met_row(501),
+    ]
+    FakeClient.instances = []
+    sleeps = []
+    monkeypatch.setattr(met, "RateClient", FakeClient)
+    monkeypatch.setattr(met.time, "sleep", sleeps.append)
+
+    result = met.collect_met(1, existing_ids={f"met-{identifier}" for identifier in first_page}, queries=["landscape"])
+
+    assert [item.id for item in result.items] == ["met-501"]
+    calls = FakeClient.instances[0].calls
+    assert calls[0][1]["limit"] == 500
+    assert calls[0][1]["offset"] == 0
+    assert calls[1][1]["limit"] == 500
+    assert calls[1][1]["offset"] == 500
+    assert sleeps == [1.0]
+
+
 def test_cma_paginates_until_new_limit(monkeypatch):
     first = [cma_row(i) for i in range(1, 21)]
     second = [cma_row(i) for i in range(21, 41)]

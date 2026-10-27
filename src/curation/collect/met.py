@@ -1,8 +1,12 @@
+import time
+
 import httpx
 from pydantic import ValidationError
 
 from ..models import Candidate, ImageRef
 from .common import DEFAULT_QUERIES, CollectionResult, RateClient
+
+SEARCH_BATCH_SIZE = 500
 
 
 def collect_met(limit: int, include_works_on_paper: bool = False, existing_ids: set[str] | None = None, contact: str | None = None, queries: list[str] | None = None) -> CollectionResult:
@@ -14,7 +18,9 @@ def collect_met(limit: int, include_works_on_paper: bool = False, existing_ids: 
         for query in search_terms:
             offset = 0
             while len(result.items) < limit:
-                payload = client.get_json("https://collectionapi.metmuseum.org/public/collection/v1.1/search", {"q": query, "hasImages": "true", "offset": offset, "limit": 100})
+                if offset:
+                    time.sleep(1.0)
+                payload = client.get_json("https://collectionapi.metmuseum.org/public/collection/v1.1/search", {"q": query, "hasImages": "true", "offset": offset, "limit": SEARCH_BATCH_SIZE})
                 ids = payload.get("objectIDs") or payload.get("objectIds") or []
                 if not ids:
                     break
@@ -54,7 +60,7 @@ def collect_met(limit: int, include_works_on_paper: bool = False, existing_ids: 
                         break
                 offset += len(ids)
                 total = payload.get("total")
-                if len(ids) < 100 or (isinstance(total, int) and offset >= total):
+                if len(ids) < SEARCH_BATCH_SIZE or (isinstance(total, int) and offset >= total):
                     break
             if len(result.items) >= limit:
                 break

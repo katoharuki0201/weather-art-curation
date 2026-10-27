@@ -31,6 +31,8 @@ def test_review_api(candidate, image_file, tmp_path):
     assert client.get("/api/reviews").json()["aic-1"]["status"] == "approved"
     stats = client.get("/api/stats").json()
     assert stats["counts"]["clear"]["day"] == 1
+    assert stats["progress"] == {"approved": 1, "rejected": 0, "skipped": 0, "unreviewed": 0}
+    assert stats["sources"]["aic"] == 1
     page = client.get("/").text
     assert "effectiveTags" in page
     assert "/api/stats" in page
@@ -42,6 +44,9 @@ def test_review_api(candidate, image_file, tmp_path):
     for legacy_name in ("title", "status", "image", "tags", "scores", "weatherFilter", "timeFilter", "stats"):
         assert not re.search(rf"(?<![\w.]){legacy_name}\s*\.", page)
     assert client.get("/favicon.ico").status_code == 204
+    skipped = {"status": "skipped", "tags": None, "updated_at": datetime.now(UTC).isoformat()}
+    assert client.put("/api/reviews/aic-1", json=skipped).status_code == 200
+    assert client.get("/api/stats").json()["progress"]["skipped"] == 1
 
 
 def test_review_unknown_item_is_rejected(tmp_path):

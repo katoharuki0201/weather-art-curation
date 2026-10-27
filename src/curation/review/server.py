@@ -8,24 +8,24 @@ from ..io import atomic_json, read_json, read_jsonl
 from ..models import Classified, Review
 
 HTML = r"""<!doctype html><html lang=ja><meta charset=utf-8><title>Weather Art Review</title>
-<style>body{font:15px system-ui;max-width:1200px;margin:auto;background:#f4f2ed}#card{background:white;padding:20px;margin:20px;border-radius:12px;display:grid;grid-template-columns:55% 45%;gap:18px}img{max-width:100%;max-height:70vh}button,select{font-size:16px;margin:5px;padding:8px}.tag{margin:5px}.approved{color:#08752f}.rejected{color:#b01d1d}#stats{white-space:pre-wrap}</style>
-<h1>Weather Art Review</h1><p id=error role=alert></p><div><label>天気 <select id=weatherFilter onchange="applyFilter()"><option value="">すべて</option></select></label><label>時間 <select id=timeFilter onchange="applyFilter()"><option value="">すべて</option></select></label></div><p id=stats></p>
-<div id=card><div><img id=image></div><div><h2 id=title></h2><strong id=status></strong><pre id=scores></pre><div id=tags></div><p><button onclick="save('approved')">A 承認</button><button onclick="save('rejected')">R 却下</button><button onclick="move(1)">S スキップ</button></p></div></div>
+<style>body{font:15px system-ui;max-width:1200px;margin:auto;background:#f4f2ed}#card{background:white;padding:20px;margin:20px;border-radius:12px;display:grid;grid-template-columns:55% 45%;gap:18px}img{max-width:100%;max-height:70vh}button,select{font-size:16px;margin:5px;padding:8px}.tag{margin:5px}.approved{color:#08752f}.rejected{color:#b01d1d}.skipped{color:#8a6500}#stats{white-space:pre-wrap}</style>
+<h1>Weather Art Review</h1><p id=error role=alert></p><div><label>天気 <select id=weatherFilter onchange="applyFilter()"><option value="">すべて</option></select></label><label>時間 <select id=timeFilter onchange="applyFilter()"><option value="">すべて</option></select></label><label>判定 <select id=statusFilter onchange="applyFilter()"><option value="">すべて</option><option value="unreviewed">未判定</option><option value="approved">承認</option><option value="rejected">却下</option><option value="skipped">スキップ</option></select></label></div><p id=stats></p>
+<div id=card><div><img id=image></div><div><h2 id=title></h2><strong id=status></strong><pre id=scores></pre><div id=tags></div><p><button onclick="save('approved')">A 承認</button><button onclick="save('rejected')">R 却下</button><button onclick="save('skipped')">S スキップ</button></p></div></div>
 <script>let allItems=[],items=[],i=0,reviews={},summary={};const axes={weather:['clear','cloudy','fog','rain','snow','storm'],time:['day','twilight','night'],season:['spring','summer','autumn','winter']};
-const ui={errorMessage:document.getElementById('error'),weatherSelect:document.getElementById('weatherFilter'),timeSelect:document.getElementById('timeFilter'),statsText:document.getElementById('stats'),artImage:document.getElementById('image'),artTitle:document.getElementById('title'),reviewStatus:document.getElementById('status'),scoreText:document.getElementById('scores'),tagControls:document.getElementById('tags')};
+const ui={errorMessage:document.getElementById('error'),weatherSelect:document.getElementById('weatherFilter'),timeSelect:document.getElementById('timeFilter'),statusSelect:document.getElementById('statusFilter'),statsText:document.getElementById('stats'),artImage:document.getElementById('image'),artTitle:document.getElementById('title'),reviewStatus:document.getElementById('status'),scoreText:document.getElementById('scores'),tagControls:document.getElementById('tags')};
 async function getJSON(url,options){const response=await fetch(url,options);if(!response.ok)throw new Error(`${url}: HTTP ${response.status} ${await response.text()}`);return response.json()}
 function showError(error){ui.errorMessage.textContent=`エラー: ${error instanceof Error?error.message:String(error)}`;ui.errorMessage.style.color='#b01d1d'}
 async function init(){try{[allItems,reviews,summary]=await Promise.all([getJSON('/api/items'),getJSON('/api/reviews'),getJSON('/api/stats')]);for(const value of axes.weather)ui.weatherSelect.add(new Option(value,value));for(const value of axes.time)ui.timeSelect.add(new Option(value,value));showStats();applyFilter()}catch(error){showError(error);ui.artTitle.textContent='レビュー画面を初期化できませんでした'}}
 function effectiveTags(x){const r=reviews[x.id];return r&&r.tags?r.tags:x.tags}
-function showStats(){ui.statsText.textContent=Object.entries(summary.counts).map(([w,ts])=>w+': '+Object.entries(ts).map(([t,n])=>`${t} ${n}/${summary.targets[w][t]}`).join(', ')).join('\n')}
-function applyFilter(){const weather=ui.weatherSelect.value,time=ui.timeSelect.value;items=allItems.filter(item=>{const itemTags=effectiveTags(item);return(!weather||itemTags.weather.includes(weather))&&(!time||itemTags.time.includes(time))});i=0;render()}
+function showStats(){const progress=Object.entries(summary.progress).map(([key,value])=>`${key}=${value}`).join(', '),sources=Object.entries(summary.sources).map(([key,value])=>`${key}=${value}`).join(', ');ui.statsText.textContent=`進捗: ${progress}\n収集元: ${sources}\n`+Object.entries(summary.counts).map(([w,ts])=>w+': '+Object.entries(ts).map(([t,n])=>`${t} ${n}/${summary.targets[w][t]} (不足 ${Math.max(0,summary.targets[w][t]-n)})`).join(', ')).join('\n')}
+function applyFilter(){const weather=ui.weatherSelect.value,time=ui.timeSelect.value,reviewState=ui.statusSelect.value;items=allItems.filter(item=>{const itemTags=effectiveTags(item),actualState=reviews[item.id]?.status||'unreviewed';return(!weather||itemTags.weather.includes(weather))&&(!time||itemTags.time.includes(time))&&(!reviewState||actualState===reviewState)});i=0;render()}
 function render(){if(!items.length){ui.artTitle.textContent='対象なし';ui.artImage.removeAttribute('src');ui.tagControls.innerHTML='';return}
 const item=items[i],savedReview=reviews[item.id],shownTags=effectiveTags(item);ui.artImage.src=item.image.thumbUrl||item.image.url;ui.artTitle.textContent=`${i+1}/${items.length} ${item.title} — ${item.artist} (${Math.round(item.confidence*100)}%)`;ui.reviewStatus.textContent=savedReview?`保存済み: ${savedReview.status}`:'未判定';ui.reviewStatus.className=savedReview?savedReview.status:'';ui.scoreText.textContent=JSON.stringify(item.scores,null,2);ui.tagControls.innerHTML='';
 for(const [axis,values] of Object.entries(axes)){ui.tagControls.innerHTML+=`<h3>${axis}</h3>`+values.map(value=>`<label class=tag><input type=checkbox data-axis=${axis} value=${value} ${shownTags[axis].includes(value)?'checked':''}>${value}</label>`).join('')}}
 function move(step){if(!items.length)return;i=(i+step+items.length)%items.length;render()}
 async function save(decision){if(!items.length)return;try{const item=items[i],selected={weather:[],time:[],season:[]};ui.tagControls.querySelectorAll('input:checked').forEach(input=>selected[input.dataset.axis].push(input.value));const payload={status:decision,tags:decision==='approved'?selected:null,updated_at:new Date().toISOString()};
-await getJSON('/api/reviews/'+item.id,{method:'PUT',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});reviews[item.id]=payload;summary=await getJSON('/api/stats');ui.errorMessage.textContent='';showStats();move(1)}catch(error){showError(error)}}
-document.onkeydown=e=>{if(['INPUT','SELECT'].includes(e.target.tagName))return;if(e.key==='a')save('approved');if(e.key==='r')save('rejected');if(e.key==='s')move(1)};init();</script></html>"""
+await getJSON('/api/reviews/'+item.id,{method:'PUT',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});reviews[item.id]=payload;summary=await getJSON('/api/stats');ui.errorMessage.textContent='';showStats();if(ui.statusSelect.value)applyFilter();else move(1)}catch(error){showError(error)}}
+document.onkeydown=e=>{if(['INPUT','SELECT'].includes(e.target.tagName))return;if(e.key==='a')save('approved');if(e.key==='r')save('rejected');if(e.key==='s')save('skipped')};init();</script></html>"""
 
 
 def create_app(classified_path: Path = Path("data/classified.jsonl"), reviews_path: Path = Path("data/reviews.json")) -> FastAPI:
@@ -56,13 +56,19 @@ def create_app(classified_path: Path = Path("data/classified.jsonl"), reviews_pa
 
     @app.get("/api/stats")
     def stats():
-        items_by_id = {x.id: x for x in read_jsonl(classified_path, Classified)}
+        items_by_id = {x.id: x for x in read_jsonl(classified_path, Classified) if x.sky_visible}
         counts = {w: {t: 0 for t in times} for w, times in TARGETS.items()}
+        progress = {"approved": 0, "rejected": 0, "skipped": 0, "unreviewed": len(items_by_id)}
+        sources = {"aic": 0, "met": 0, "cma": 0}
+        for item in items_by_id.values(): sources[item.source] += 1
         for item_id, raw in read_json(reviews_path, {}).items():
             review = Review.model_validate(raw)
-            if review.status != "approved" or item_id not in items_by_id: continue
+            if item_id not in items_by_id: continue
+            progress[review.status] += 1
+            progress["unreviewed"] -= 1
+            if review.status != "approved": continue
             tags = review.tags or items_by_id[item_id].tags
             for weather in tags.weather:
                 for time in tags.time: counts[weather][time] += 1
-        return {"counts": counts, "targets": TARGETS}
+        return {"counts": counts, "targets": TARGETS, "progress": progress, "sources": sources}
     return app

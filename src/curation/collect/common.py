@@ -12,6 +12,16 @@ class CollectionResult:
     items: list[Candidate] = field(default_factory=list)
     skipped_existing: int = 0
     rejected: int = 0
+    duplicates: int = 0
+    scanned: int = 0
+    queries: list[str] = field(default_factory=list)
+
+
+DEFAULT_QUERIES = {
+    "aic": ["landscape seascape cityscape sky"],
+    "met": ["landscape", "sky", "seascape", "cityscape", "weather"],
+    "cma": ["landscape", "sky", "cloud", "weather", "rain", "snow", "fog", "storm", "seascape", "cityscape"],
+}
 
 
 class RateClient:

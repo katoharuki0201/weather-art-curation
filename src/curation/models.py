@@ -59,7 +59,6 @@ class Classified(Candidate):
 
 
 class Review(BaseModel):
-    status: Literal["approved", "rejected"]
+    status: Literal["approved", "rejected", "skipped"]
     tags: Tags | None = None
     updated_at: str
-

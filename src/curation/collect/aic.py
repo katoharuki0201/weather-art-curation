@@ -2,17 +2,19 @@ from ..models import Candidate, ImageRef
 from .common import CollectionResult, RateClient
 
 
-def collect_aic(limit: int, include_works_on_paper: bool = False, existing_ids: set[str] | None = None, contact: str | None = None) -> CollectionResult:
+def collect_aic(limit: int, include_works_on_paper: bool = False, existing_ids: set[str] | None = None, contact: str | None = None, queries: list[str] | None = None) -> CollectionResult:
     if not contact or not contact.strip():
         raise ValueError("AIC contact is required (email or project URL)")
     client = RateClient(1.0, {"AIC-User-Agent": f"weather-art-curation ({contact.strip()})"})
     fields = "id,title,artist_display,date_display,image_id,is_public_domain,artwork_type_title,subject_titles"
-    result, page = CollectionResult(), 1
+    query = (queries or ["landscape seascape cityscape sky"])[0]
+    result, page = CollectionResult(queries=[query]), 1
     existing_ids = existing_ids or set()
     try:
         while len(result.items) < limit:
-            payload = client.get_json("https://api.artic.edu/api/v1/artworks/search", {"q": "landscape seascape cityscape sky", "page": page, "limit": min(100, max(20, limit)), "fields": fields})
+            payload = client.get_json("https://api.artic.edu/api/v1/artworks/search", {"q": query, "page": page, "limit": min(100, max(20, limit)), "fields": fields})
             for raw in payload.get("data", []):
+                result.scanned += 1
                 kind = (raw.get("artwork_type_title") or "").lower()
                 allowed = "painting" in kind or (include_works_on_paper and any(x in kind for x in ("print", "drawing")))
                 if not (raw.get("is_public_domain") and raw.get("image_id") and allowed):

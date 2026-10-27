@@ -56,6 +56,9 @@ def test_met_skips_existing_without_detail_request(monkeypatch):
     assert [item.id for item in result.items] == ["met-2"]
     assert result.skipped_existing == 1
     assert len(FakeClient.instances[0].calls) == 2
+    assert "/v1.1/search" in FakeClient.instances[0].calls[0][0]
+    assert FakeClient.instances[0].calls[0][1]["offset"] == 0
+    assert result.scanned == 2
 
 
 def test_cma_paginates_until_new_limit(monkeypatch):
@@ -68,3 +71,13 @@ def test_cma_paginates_until_new_limit(monkeypatch):
     assert [item.id for item in result.items] == ["cma-21", "cma-22"]
     assert result.skipped_existing == 20
     assert FakeClient.instances[0].calls[1][1]["skip"] == 20
+
+
+def test_cma_deduplicates_across_queries(monkeypatch):
+    FakeClient.responses = [{"data": [cma_row(1)]}, {"data": [cma_row(1), cma_row(2)]}]
+    FakeClient.instances = []
+    monkeypatch.setattr(cma, "RateClient", FakeClient)
+    result = cma.collect_cma(2, queries=["landscape", "sky"])
+    assert [item.id for item in result.items] == ["cma-1", "cma-2"]
+    assert result.duplicates == 1
+    assert result.queries == ["landscape", "sky"]

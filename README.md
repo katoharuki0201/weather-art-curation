@@ -34,6 +34,26 @@ AICのAPIと画像へのアクセス時は利用者を識別できる連絡先�
 
 画像取得でHTTPエラーや一時的なネットワーク障害が起きても、他の作品の取得は継続します。失敗した作品IDと理由は標準エラーに、成功・キャッシュ済み・失敗の件数は最後に表示されます。不完全な `.part` ファイルは削除されるため、同じコマンドを再実行すると失敗分だけを再試行します。
 
+取得元は `--source` で限定できます。オプションの反復とカンマ区切りの両方に対応します。
+
+```sh
+uv run curation fetch-images --source met
+uv run curation fetch-images --source met --source cma
+uv run curation fetch-images --source met,cma
+```
+
+### AIC画像配信の既知制約
+
+2026-10-27現在、AIC公式の `www.artic.edu/iiif` はCloudflare managed challengeにより、通常の非ブラウザHTTPクライアントからの画像取得を403で拒否します。User-Agentや連絡先の指定では解決できず、公式メタデータにも代替画像URLはありません。状況は[AIC api-data Issue #9](https://github.com/art-institute-of-chicago/api-data/issues/9)を参照してください。
+
+本ツールはchallengeを検出すると、それ以降のAIC画像への連続アクセスを止めて具体的な案内を表示します。Cloudflareの回避は行いません。当面はMet/CMAを収集・取得してください。
+
+```sh
+uv run curation collect --source met --limit 200
+uv run curation collect --source cma --limit 200
+uv run curation fetch-images --source met,cma
+```
+
 レビュー画面は `http://127.0.0.1:8000` に開きます。`A` 承認、`R` 却下、`S` スキップ。タグのチェックを変更してから承認できます。各判定は直ちに一時ファイル経由で `data/reviews.json` に保存され、再分類では消えません。
 
 `export` は承認済み作品だけを書き出し、`schema/artwork.schema.json` に不適合なら失敗します。`evaluate` は `eval/labeled.jsonl` の各行（`{"id":"aic-1","tags":{...}}`）と比較し、軸別 accuracy と混同行列を表示します。

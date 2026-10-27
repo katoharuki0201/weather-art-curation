@@ -34,13 +34,22 @@ def collect(source: Annotated[str, typer.Option(help="aic, met, or cma")], limit
 
 
 @app.command("fetch-images")
-def fetch_images(cache: Path = DATA / "cache/images", interval: float = 1.0, aic_contact: str | None = typer.Option(None, envvar="CURATION_AIC_CONTACT", help="AIC image request contact email or project URL")):
+def fetch_images(cache: Path = DATA / "cache/images", interval: float = 1.0, aic_contact: str | None = typer.Option(None, envvar="CURATION_AIC_CONTACT", help="AIC image request contact email or project URL"), source: Annotated[list[str] | None, typer.Option("--source", help="Sources to fetch; repeat or comma-separate: aic,met,cma")] = None):
+    selected = {value.strip() for group in (source or []) for value in group.split(",") if value.strip()}
+    invalid = selected - set(COLLECTORS)
+    if invalid:
+        raise typer.BadParameter(f"unknown source(s): {', '.join(sorted(invalid))}", param_hint="--source")
+    candidates = read_jsonl(DATA / "candidates.jsonl", Candidate)
+    if selected:
+        candidates = [item for item in candidates if item.source in selected]
     try:
-        result = fetch_all_images(read_jsonl(DATA / "candidates.jsonl", Candidate), cache, interval, aic_contact)
+        result = fetch_all_images(candidates, cache, interval, aic_contact)
     except ValueError as exc:
         raise typer.BadParameter(str(exc), param_hint="--aic-contact") from exc
     for failure in result.failures:
         typer.echo(f"failed {failure.id}: {failure.reason}", err=True)
+    if any(failure.code == "aic_cloudflare_challenge" for failure in result.failures):
+        typer.echo("AIC IIIFの既知Cloudflare障害です。Met/CMAを利用してください。", err=True)
     typer.echo(f"fetched={result.fetched} skipped={result.skipped} failed={result.failed}")
 
 

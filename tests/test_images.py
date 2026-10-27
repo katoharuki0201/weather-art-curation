@@ -10,9 +10,12 @@ def make_candidate(identifier, source="aic"):
 
 
 class FakeResponse:
-    def __init__(self, content=b"image", error=None):
+    def __init__(self, content=b"image", error=None, status_code=200, headers=None, text=""):
         self.content = content
         self.error = error
+        self.status_code = status_code
+        self.headers = headers or {}
+        self.text = text
 
     def raise_for_status(self):
         if self.error:
@@ -71,3 +74,36 @@ def test_partial_success_headers_cleanup_and_cache_skip(monkeypatch, tmp_path):
     assert FakeHttpClient.calls[0][1] == {"AIC-User-Agent": "weather-art-curation (owner@example.com)"}
     assert FakeHttpClient.calls[1][1] == {"AIC-User-Agent": "weather-art-curation (owner@example.com)"}
     assert len(FakeHttpClient.calls) == 2
+
+
+@pytest.mark.parametrize(
+    ("headers", "text"),
+    [
+        ({"cf-mitigated": "challenge"}, ""),
+        ({"content-type": "text/html"}, "<title>Just a moment...</title><p>Cloudflare</p>"),
+    ],
+)
+def test_aic_cloudflare_challenge_stops_later_aic_requests(monkeypatch, tmp_path, headers, text):
+    items = [make_candidate(1), make_candidate(2), make_candidate(3, "met")]
+    FakeHttpClient.responses = [FakeResponse(status_code=403, headers=headers, text=text), FakeResponse(b"met-image")]
+    FakeHttpClient.calls = []
+    monkeypatch.setattr("curation.images.httpx.Client", FakeHttpClient)
+
+    result = fetch_images(items, tmp_path, interval=0, aic_contact="owner@example.com")
+
+    assert result.fetched == 1
+    assert [failure.id for failure in result.failures] == ["aic-1", "aic-2"]
+    assert {failure.code for failure in result.failures} == {"aic_cloudflare_challenge"}
+    assert len(FakeHttpClient.calls) == 2
+
+
+def test_normal_403_is_not_cloudflare_challenge(monkeypatch, tmp_path):
+    item = make_candidate(1)
+    request = httpx.Request("GET", str(item.image.url))
+    response = httpx.Response(403, request=request)
+    error = httpx.HTTPStatusError("403 Forbidden", request=request, response=response)
+    FakeHttpClient.responses = [FakeResponse(error=error, status_code=403)]
+    FakeHttpClient.calls = []
+    monkeypatch.setattr("curation.images.httpx.Client", FakeHttpClient)
+    result = fetch_images([item], tmp_path, interval=0, aic_contact="owner@example.com")
+    assert result.failures[0].code == "request_failed"

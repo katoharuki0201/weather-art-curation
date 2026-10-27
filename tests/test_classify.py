@@ -1,3 +1,7 @@
+import warnings
+
+from PIL import Image
+
 from curation.classify.color import analyze_color
 from curation.classify.service import classify_one
 
@@ -15,3 +19,12 @@ def test_color_and_classify(candidate, image_file):
     assert result.tags.weather == ["clear"]
     assert "summer" in result.tags.season
 
+
+def test_black_image_color_analysis_has_no_runtime_warning(tmp_path):
+    path = tmp_path / "black.png"
+    Image.new("RGB", (20, 20), (0, 0, 0)).save(path)
+    with warnings.catch_warnings():
+        warnings.simplefilter("error", RuntimeWarning)
+        features = analyze_color(path)
+    assert features["brightness"] == 0
+    assert features["saturation"] == 0

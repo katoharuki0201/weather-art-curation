@@ -15,13 +15,14 @@ def collect_met(limit: int, include_works_on_paper: bool = False, existing_ids: 
     search_terms = queries or DEFAULT_QUERIES["met"]
     result = CollectionResult(queries=list(search_terms))
     existing_ids, seen = existing_ids or set(), set()
+    search_medium = "Paintings|Drawings|Prints" if include_works_on_paper else "Paintings"
     try:
         for query in search_terms:
             offset = 0
             while len(result.items) < limit:
                 if offset:
                     time.sleep(1.0)
-                payload = search_client.get_json("https://collectionapi.metmuseum.org/public/collection/v1.1/search", {"q": query, "hasImages": "true", "offset": offset, "limit": SEARCH_BATCH_SIZE})
+                payload = search_client.get_json("https://collectionapi.metmuseum.org/public/collection/v1.1/search", {"q": query, "hasImages": "true", "medium": search_medium, "offset": offset, "limit": SEARCH_BATCH_SIZE})
                 ids = payload.get("objectIDs") or payload.get("objectIds") or []
                 if not ids:
                     break
@@ -48,7 +49,8 @@ def collect_met(limit: int, include_works_on_paper: bool = False, existing_ids: 
                         continue
                     try:
                         medium = (raw.get("medium") or "").lower()
-                        allowed = "painting" in (raw.get("classification") or "").lower() or "oil" in medium or (include_works_on_paper and any(x in medium for x in ("print", "drawing", "paper")))
+                        classification = (raw.get("classification") or "").lower()
+                        allowed = "painting" in classification or "oil" in medium or (include_works_on_paper and any(x in classification or x in medium for x in ("print", "drawing", "paper")))
                         if not (raw.get("isPublicDomain") and raw.get("primaryImageSmall") and allowed):
                             result.rejected += 1
                             continue

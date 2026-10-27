@@ -67,7 +67,22 @@ def test_met_skips_existing_without_detail_request(monkeypatch):
     assert "/v1.1/search" in FakeClient.instances[0].calls[0][0]
     assert "/v1/objects/" in FakeClient.instances[1].calls[0][0]
     assert FakeClient.instances[0].calls[0][1]["offset"] == 0
+    assert FakeClient.instances[0].calls[0][1]["medium"] == "Paintings"
     assert result.scanned == 2
+
+
+def test_met_works_on_paper_uses_multi_medium_filter(monkeypatch):
+    drawing = met_row(1)
+    drawing["classification"] = "Drawings"
+    drawing["medium"] = "Graphite"
+    FakeClient.responses = [{"objectIDs": [1]}, drawing]
+    FakeClient.instances = []
+    monkeypatch.setattr(met, "RateClient", FakeClient)
+
+    result = met.collect_met(1, include_works_on_paper=True, queries=["landscape"])
+
+    assert [item.id for item in result.items] == ["met-1"]
+    assert FakeClient.instances[0].calls[0][1]["medium"] == "Paintings|Drawings|Prints"
 
 
 def test_met_isolates_missing_and_invalid_detail_records(monkeypatch):

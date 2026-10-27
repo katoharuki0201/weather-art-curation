@@ -4,7 +4,7 @@ from typing import Annotated
 
 import typer
 
-from .categories import TARGETS
+from .categories import TIMES, WEATHER
 from .classify.clip import OpenClipClassifier
 from .classify.service import classify_one
 from .collect import COLLECTORS
@@ -109,7 +109,7 @@ def export_command(output: Path = Path("dist/artworks.json"), schema: Path = Pat
 def stats():
     values = [item for item in read_jsonl(DATA / "classified.jsonl", Classified) if item.sky_visible]
     reviews = read_json(DATA / "reviews.json", {})
-    counts = {w: {t: 0 for t in times} for w, times in TARGETS.items()}
+    counts = {weather: {time: 0 for time in TIMES} for weather in WEATHER}
     progress = {"approved": 0, "rejected": 0, "skipped": 0, "unreviewed": len(values)}
     sources = {name: 0 for name in COLLECTORS}
     for item in values: sources[item.source] += 1
@@ -127,7 +127,7 @@ def stats():
     typer.echo("progress: " + ", ".join(f"{key}={value}" for key, value in progress.items()))
     typer.echo("sources: " + ", ".join(f"{key}={value}" for key, value in sources.items()))
     for weather, times in counts.items():
-        typer.echo(weather + ": " + ", ".join(f"{time}={count}/{TARGETS[weather][time]} missing={max(0, TARGETS[weather][time]-count)}" for time, count in times.items()))
+        typer.echo(weather + ": " + ", ".join(f"{time}={count}" for time, count in times.items()))
 
 
 if __name__ == "__main__": app()

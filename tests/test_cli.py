@@ -57,6 +57,7 @@ def test_stats_uses_only_sky_visible_for_all_counts(monkeypatch, tmp_path):
     assert result.exit_code == 0
     assert "progress: approved=1, rejected=0, skipped=0, unreviewed=0" in result.stdout
     assert "sources: aic=0, met=1, cma=0" in result.stdout
-    assert "clear: day=1/60" in result.stdout
-    assert "snow: day=0/30" in result.stdout
-    assert "night=0/10" in result.stdout
+    assert "clear: day=1" in result.stdout
+    assert "snow: day=0" in result.stdout
+    assert "night=0" in result.stdout
+    assert "missing=" not in result.stdout

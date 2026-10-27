@@ -31,17 +31,26 @@ def test_review_api(candidate, image_file, tmp_path):
     assert client.get("/api/reviews").json()["aic-1"]["status"] == "approved"
     stats = client.get("/api/stats").json()
     assert stats["counts"]["clear"]["day"] == 1
+    assert "targets" not in stats
     assert stats["progress"] == {"approved": 1, "rejected": 0, "skipped": 0, "unreviewed": 0}
     assert stats["sources"]["aic"] == 1
     page = client.get("/").text
     assert "effectiveTags" in page
     assert "/api/stats" in page
-    assert "weatherFilter" in page
-    assert "document.getElementById('weatherFilter')" in page
+    assert "weatherFilter" not in page
+    assert "timeFilter" not in page
+    assert "statusFilter" not in page
+    assert "晴れ" in page
+    assert "朝夕" in page
+    assert "スキップ S" in page
+    assert "分類スコアを表示" in page
+    assert "class=chip" in page
+    assert "@media(max-width:850px)" in page
+    assert "不足" not in page
     assert "showError" in page
     assert "レビュー画面を初期化できませんでした" in page
     # ID-named elements must never rely on legacy window globals.
-    for legacy_name in ("title", "status", "image", "tags", "scores", "weatherFilter", "timeFilter", "stats"):
+    for legacy_name in ("title", "status", "image", "tags", "scores"):
         assert not re.search(rf"(?<![\w.]){legacy_name}\s*\.", page)
     assert client.get("/favicon.ico").status_code == 204
     skipped = {"status": "skipped", "tags": None, "updated_at": datetime.now(UTC).isoformat()}

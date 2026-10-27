@@ -46,6 +46,10 @@ def test_review_api(candidate, image_file, tmp_path):
     assert "分類スコアを表示" in page
     assert "class=chip" in page
     assert "@media(max-width:850px)" in page
+    assert "white-space:nowrap" in page
+    assert "grid-template-columns:repeat(2,minmax(0,1fr))" in page
+    assert "@media(max-width:420px)" in page
+    assert ".actions .primary{grid-column:1/-1" in page
     assert "不足" not in page
     assert "showError" in page
     assert "レビュー画面を初期化できませんでした" in page

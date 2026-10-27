@@ -7,7 +7,7 @@ from ..categories import TARGETS
 from ..io import atomic_json, read_json, read_jsonl
 from ..models import Classified, Review
 
-HTML = """<!doctype html><html lang=ja><meta charset=utf-8><title>Weather Art Review</title>
+HTML = r"""<!doctype html><html lang=ja><meta charset=utf-8><title>Weather Art Review</title>
 <style>body{font:15px system-ui;max-width:1200px;margin:auto;background:#f4f2ed}#card{background:white;padding:20px;margin:20px;border-radius:12px;display:grid;grid-template-columns:55% 45%;gap:18px}img{max-width:100%;max-height:70vh}button,select{font-size:16px;margin:5px;padding:8px}.tag{margin:5px}.approved{color:#08752f}.rejected{color:#b01d1d}#stats{white-space:pre-wrap}</style>
 <h1>Weather Art Review</h1><p id=error role=alert></p><div><label>天気 <select id=weatherFilter onchange="applyFilter()"><option value="">すべて</option></select></label><label>時間 <select id=timeFilter onchange="applyFilter()"><option value="">すべて</option></select></label></div><p id=stats></p>
 <div id=card><div><img id=image></div><div><h2 id=title></h2><strong id=status></strong><pre id=scores></pre><div id=tags></div><p><button onclick="save('approved')">A 承認</button><button onclick="save('rejected')">R 却下</button><button onclick="move(1)">S スキップ</button></p></div></div>

@@ -1,6 +1,9 @@
 import re
+import shutil
+import subprocess
 from datetime import UTC, datetime
 
+import pytest
 from fastapi.testclient import TestClient
 from test_classify import FakeClassifier
 
@@ -45,3 +48,16 @@ def test_review_unknown_item_is_rejected(tmp_path):
     client = TestClient(create_app(tmp_path / "missing.jsonl", tmp_path / "reviews.json"))
     payload = {"status": "rejected", "tags": None, "updated_at": datetime.now(UTC).isoformat()}
     assert client.put("/api/reviews/unknown", json=payload).status_code == 404
+
+
+def test_generated_review_javascript_has_valid_syntax(tmp_path):
+    node = shutil.which("node")
+    if node is None:
+        pytest.skip("Node.js is not installed; JavaScript syntax check cannot run")
+    page = TestClient(create_app(tmp_path / "classified.jsonl", tmp_path / "reviews.json")).get("/").text
+    match = re.search(r"<script>(.*?)</script>", page, re.DOTALL)
+    assert match, "review page must contain an inline script"
+    script_path = tmp_path / "review-page.js"
+    script_path.write_text(match.group(1), encoding="utf-8")
+    checked = subprocess.run([node, "--check", str(script_path)], capture_output=True, text=True, check=False)
+    assert checked.returncode == 0, checked.stderr

@@ -1,4 +1,4 @@
-from ..categories import SEASONS, TIMES, WEATHER
+from ..categories import TIMES, WEATHER
 from ..models import AxisScores, Tags
 
 
@@ -25,12 +25,11 @@ def combine(scores: dict[str, dict[str, float]], color: dict[str, float], thresh
             chosen = [max(values, key=values.get)]
         return chosen
 
-    tags = Tags(weather=select("weather", WEATHER), time=select("time", TIMES), season=select("season", SEASONS, False))
+    tags = Tags(weather=select("weather", WEATHER), time=select("time", TIMES))
     margins = []
-    for axis in ("weather", "time", "season"):
+    for axis in ("weather", "time"):
         ranked = sorted(adjusted.get(axis, {}).values(), reverse=True)
         if ranked:
             margins.append(ranked[0] - (ranked[1] if len(ranked) > 1 else 0))
     confidence = min(1.0, max(0.0, sum(margins) / len(margins) if margins else 0))
     return tags, AxisScores(**adjusted), confidence
-

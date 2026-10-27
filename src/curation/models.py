@@ -2,7 +2,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, HttpUrl, model_validator
 
-from .categories import Season, TimeOfDay, Weather
+from .categories import TimeOfDay, Weather
 
 
 class ImageRef(BaseModel):
@@ -34,7 +34,6 @@ class Candidate(BaseModel):
 class Tags(BaseModel):
     weather: list[Weather]
     time: list[TimeOfDay]
-    season: list[Season] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def required_axes(self):
@@ -47,7 +46,6 @@ class AxisScores(BaseModel):
     sky: dict[str, float] = Field(default_factory=dict)
     weather: dict[str, float] = Field(default_factory=dict)
     time: dict[str, float] = Field(default_factory=dict)
-    season: dict[str, float] = Field(default_factory=dict)
 
 
 class Classified(Candidate):

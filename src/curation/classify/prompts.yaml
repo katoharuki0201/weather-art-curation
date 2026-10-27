@@ -6,15 +6,9 @@ weather:
   cloudy: ["an overcast cloudy gray sky", "a landscape beneath thick clouds"]
   fog: ["a foggy misty landscape", "distant scenery obscured by haze"]
   rain: ["a rainy landscape with wet ground", "rain falling from dark clouds"]
-  snow: ["a snowy winter landscape", "snow falling or covering the ground"]
+  snow: ["a landscape with falling or accumulated snow", "snow falling or covering the ground"]
   storm: ["a violent storm with lightning", "a turbulent dark sky and rough sea"]
 time:
   day: ["a landscape in bright daylight", "the sun high in a daytime sky"]
   twilight: ["a pink orange sky at sunrise or sunset", "a twilight landscape"]
   night: ["a dark night sky with moon or stars", "a nighttime scene with lights"]
-season:
-  spring: ["spring flowers and fresh green leaves", "a landscape in spring"]
-  summer: ["lush dark green summer vegetation", "a sunny summer landscape"]
-  autumn: ["red and golden autumn leaves", "an autumn harvest landscape"]
-  winter: ["bare winter trees and snow", "a cold winter landscape"]
-

@@ -8,7 +8,7 @@ from curation.classify.service import classify_one
 
 class FakeClassifier:
     def predict(self, path):
-        return {"sky": {"visible": .9, "hidden": .1}, "weather": {"clear": .8, "cloudy": .2}, "time": {"day": .7, "twilight": .3}, "season": {"summer": .8, "winter": .2}}
+        return {"sky": {"visible": .9, "hidden": .1}, "weather": {"clear": .8, "cloudy": .2}, "time": {"day": .7, "twilight": .3}}
 
 
 def test_color_and_classify(candidate, image_file):
@@ -17,7 +17,7 @@ def test_color_and_classify(candidate, image_file):
     result = classify_one(candidate, image_file, FakeClassifier(), .4)
     assert result.sky_visible
     assert result.tags.weather == ["clear"]
-    assert "summer" in result.tags.season
+    assert "day" in result.tags.time
 
 
 def test_black_image_color_analysis_has_no_runtime_warning(tmp_path):

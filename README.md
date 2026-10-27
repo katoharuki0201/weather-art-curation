@@ -29,7 +29,7 @@ uv run curation stats
 uv run curation export
 ```
 
-収集は AIC / Met / CMA に対応します。`limit` は今回追加する新規作品数です。先頭に既存作品があってもAPIを先へ進めます。`collect`、`fetch-images`、`classify` は既存 ID またはキャッシュをスキップするため、中断後に同じコマンドを再実行できます。既定で画像取得は1秒間隔です。AIC API も1秒間隔、Met は0.02秒、CMA は0.1秒に制限しています。大量収集時は各館のデータダンプを優先してください。
+収集は AIC / Met / CMA に対応します。`limit` は今回追加する新規作品数です。先頭に既存作品があってもAPIを先へ進めます。`collect`、`fetch-images`、`classify` は既存 ID またはキャッシュをスキップするため、中断後に同じコマンドを再実行できます。API通信は `weather-art-curation/0.1` のUser-AgentとJSON Acceptヘッダーを送り、429・5xx・一時通信障害だけを最大3回、穏やかな指数バックオフで再試行します。既定で画像取得は1秒間隔です。AIC API も1秒間隔、Met は0.02秒、CMA は0.1秒に制限しています。大量収集時は各館のデータダンプを優先してください。
 
 Metの検索には現行のCollection API v1.1を使用し、ページングした候補をv1詳細APIでパブリックドメイン・画像・絵画か再検証します。CMAは約3,900件のCC0作品群から、landscape、sky、cloud、weather、rain、snow、fog、storm、seascape、cityscapeを個別検索し、重複を除外します。検索語を調整したい場合は `--query` を反復またはカンマ区切りで指定できます。
 

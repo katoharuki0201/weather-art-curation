@@ -21,7 +21,7 @@ uv sync --extra dev --extra clip
 
 ```sh
 uv run curation collect --source aic --limit 20 --aic-contact you@example.com
-uv run curation fetch-images
+uv run curation fetch-images --aic-contact you@example.com
 uv run curation classify
 uv run curation review
 uv run curation stats
@@ -30,7 +30,9 @@ uv run curation export
 
 収集は AIC / Met / CMA に対応します。`limit` は今回追加する新規作品数です。先頭に既存作品があってもAPIを先へ進めます。`collect`、`fetch-images`、`classify` は既存 ID またはキャッシュをスキップするため、中断後に同じコマンドを再実行できます。既定で画像取得は1秒間隔です。AIC API も1秒間隔、Met は0.02秒、CMA は0.1秒に制限しています。大量収集時は各館のデータダンプを優先してください。
 
-AICへのアクセス時は利用者を識別できる連絡先が必要です。`--aic-contact` にメールアドレスまたはプロジェクトURLを指定するか、`CURATION_AIC_CONTACT` 環境変数を設定してください。未設定の場合は不適切なUser-Agentで通信せず、コマンドをエラー終了します。Met/CMAではこの設定は不要です。
+AICのAPIと画像へのアクセス時は利用者を識別できる連絡先が必要です。`collect` と `fetch-images` の `--aic-contact` にメールアドレスまたはプロジェクトURLを指定するか、`CURATION_AIC_CONTACT` 環境変数を設定してください。AIC候補があり連絡先が未設定の場合、画像通信を始める前にコマンドをエラー終了します。Met/CMAではこの設定は不要です。
+
+画像取得でHTTPエラーや一時的なネットワーク障害が起きても、他の作品の取得は継続します。失敗した作品IDと理由は標準エラーに、成功・キャッシュ済み・失敗の件数は最後に表示されます。不完全な `.part` ファイルは削除されるため、同じコマンドを再実行すると失敗分だけを再試行します。
 
 レビュー画面は `http://127.0.0.1:8000` に開きます。`A` 承認、`R` 却下、`S` スキップ。タグのチェックを変更してから承認できます。各判定は直ちに一時ファイル経由で `data/reviews.json` に保存され、再分類では消えません。
 

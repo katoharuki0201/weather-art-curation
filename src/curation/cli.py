@@ -34,9 +34,14 @@ def collect(source: Annotated[str, typer.Option(help="aic, met, or cma")], limit
 
 
 @app.command("fetch-images")
-def fetch_images(cache: Path = DATA / "cache/images", interval: float = 1.0):
-    fetched, skipped = fetch_all_images(read_jsonl(DATA / "candidates.jsonl", Candidate), cache, interval)
-    typer.echo(f"fetched={fetched} skipped={skipped}")
+def fetch_images(cache: Path = DATA / "cache/images", interval: float = 1.0, aic_contact: str | None = typer.Option(None, envvar="CURATION_AIC_CONTACT", help="AIC image request contact email or project URL")):
+    try:
+        result = fetch_all_images(read_jsonl(DATA / "candidates.jsonl", Candidate), cache, interval, aic_contact)
+    except ValueError as exc:
+        raise typer.BadParameter(str(exc), param_hint="--aic-contact") from exc
+    for failure in result.failures:
+        typer.echo(f"failed {failure.id}: {failure.reason}", err=True)
+    typer.echo(f"fetched={result.fetched} skipped={result.skipped} failed={result.failed}")
 
 
 @app.command()

@@ -1,3 +1,4 @@
+import httpx
 import pytest
 
 from curation.collect import aic, cma, met
@@ -15,7 +16,10 @@ class FakeClient:
 
     def get_json(self, url, params=None):
         self.calls.append((url, params))
-        return self.queue.pop(0)
+        value = self.queue.pop(0)
+        if isinstance(value, Exception):
+            raise value
+        return value
 
     def close(self):
         pass
@@ -59,6 +63,25 @@ def test_met_skips_existing_without_detail_request(monkeypatch):
     assert "/v1.1/search" in FakeClient.instances[0].calls[0][0]
     assert FakeClient.instances[0].calls[0][1]["offset"] == 0
     assert result.scanned == 2
+
+
+def test_met_isolates_missing_and_invalid_detail_records(monkeypatch):
+    request = httpx.Request("GET", "https://collectionapi.metmuseum.org/public/collection/v1/objects/1")
+    missing = httpx.Response(404, request=request)
+    missing_error = httpx.HTTPStatusError("not found", request=request, response=missing)
+    invalid = met_row(2)
+    invalid["primaryImageSmall"] = "not-a-url"
+    FakeClient.responses = [{"objectIDs": [1, 2, 3]}, missing_error, invalid, met_row(3)]
+    FakeClient.instances = []
+    monkeypatch.setattr(met, "RateClient", FakeClient)
+
+    result = met.collect_met(1, queries=["landscape"])
+
+    assert [item.id for item in result.items] == ["met-3"]
+    assert result.scanned == 3
+    assert result.rejected == 2
+    assert result.failed_detail == 2
+    assert result.detail_failures == {"http_404": 1, "invalid_data": 1}
 
 
 def test_cma_paginates_until_new_limit(monkeypatch):

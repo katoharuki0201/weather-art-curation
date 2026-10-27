@@ -15,6 +15,12 @@ class CollectionResult:
     duplicates: int = 0
     scanned: int = 0
     queries: list[str] = field(default_factory=list)
+    failed_detail: int = 0
+    detail_failures: dict[str, int] = field(default_factory=dict)
+
+    def record_detail_failure(self, reason: str) -> None:
+        self.failed_detail += 1
+        self.detail_failures[reason] = self.detail_failures.get(reason, 0) + 1
 
 
 DEFAULT_QUERIES = {

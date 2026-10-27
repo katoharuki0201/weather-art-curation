@@ -1,3 +1,6 @@
+import httpx
+from pydantic import ValidationError
+
 from ..models import Candidate, ImageRef
 from .common import DEFAULT_QUERIES, CollectionResult, RateClient
 
@@ -25,13 +28,28 @@ def collect_met(limit: int, include_works_on_paper: bool = False, existing_ids: 
                     if item_id in existing_ids:
                         result.skipped_existing += 1
                         continue
-                    raw = client.get_json(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{object_id}")
-                    medium = (raw.get("medium") or "").lower()
-                    allowed = "painting" in (raw.get("classification") or "").lower() or "oil" in medium or (include_works_on_paper and any(x in medium for x in ("print", "drawing", "paper")))
-                    if not (raw.get("isPublicDomain") and raw.get("primaryImageSmall") and allowed):
+                    try:
+                        raw = client.get_json(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{object_id}")
+                    except httpx.HTTPStatusError as exc:
+                        status = exc.response.status_code
                         result.rejected += 1
+                        result.record_detail_failure(f"http_{status}")
                         continue
-                    result.items.append(Candidate(id=item_id, source="met", title=raw.get("title") or "Untitled", artist=raw.get("artistDisplayName") or "Unknown", date=raw.get("objectDate") or "", image=ImageRef(url=raw.get("primaryImage") or raw["primaryImageSmall"], thumbUrl=raw["primaryImageSmall"]), sourceUrl=raw.get("objectURL") or f"https://www.metmuseum.org/art/collection/search/{object_id}", credit=f"The Metropolitan Museum of Art, {raw.get('creditLine') or 'Public Domain'}", subjects=raw.get("tags") and [x.get("term", "") for x in raw["tags"]] or []))
+                    except httpx.TransportError:
+                        result.rejected += 1
+                        result.record_detail_failure("network")
+                        continue
+                    try:
+                        medium = (raw.get("medium") or "").lower()
+                        allowed = "painting" in (raw.get("classification") or "").lower() or "oil" in medium or (include_works_on_paper and any(x in medium for x in ("print", "drawing", "paper")))
+                        if not (raw.get("isPublicDomain") and raw.get("primaryImageSmall") and allowed):
+                            result.rejected += 1
+                            continue
+                        result.items.append(Candidate(id=item_id, source="met", title=raw.get("title") or "Untitled", artist=raw.get("artistDisplayName") or "Unknown", date=raw.get("objectDate") or "", image=ImageRef(url=raw.get("primaryImage") or raw["primaryImageSmall"], thumbUrl=raw["primaryImageSmall"]), sourceUrl=raw.get("objectURL") or f"https://www.metmuseum.org/art/collection/search/{object_id}", credit=f"The Metropolitan Museum of Art, {raw.get('creditLine') or 'Public Domain'}", subjects=raw.get("tags") and [x.get("term", "") for x in raw["tags"]] or []))
+                    except (ValidationError, KeyError, TypeError, ValueError):
+                        result.rejected += 1
+                        result.record_detail_failure("invalid_data")
+                        continue
                     if len(result.items) >= limit:
                         break
                 offset += len(ids)

@@ -31,7 +31,8 @@ def collect(source: Annotated[str, typer.Option(help="aic, met, or cma")], limit
     except ValueError as exc:
         raise typer.BadParameter(str(exc), param_hint="--aic-contact") from exc
     append_jsonl(path, result.items)
-    typer.echo(f"queries={','.join(result.queries)} added={len(result.items)} scanned={result.scanned} skipped_existing={result.skipped_existing} duplicates={result.duplicates} rejected={result.rejected}")
+    detail_failures = ",".join(f"{key}:{value}" for key, value in sorted(result.detail_failures.items())) or "none"
+    typer.echo(f"queries={','.join(result.queries)} added={len(result.items)} scanned={result.scanned} skipped_existing={result.skipped_existing} duplicates={result.duplicates} rejected={result.rejected} failed_detail={result.failed_detail} detail_reasons={detail_failures}")
 
 
 @app.command("fetch-images")

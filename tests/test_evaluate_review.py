@@ -1,3 +1,4 @@
+import re
 from datetime import UTC, datetime
 
 from fastapi.testclient import TestClient
@@ -31,6 +32,13 @@ def test_review_api(candidate, image_file, tmp_path):
     assert "effectiveTags" in page
     assert "/api/stats" in page
     assert "weatherFilter" in page
+    assert "document.getElementById('weatherFilter')" in page
+    assert "showError" in page
+    assert "レビュー画面を初期化できませんでした" in page
+    # ID-named elements must never rely on legacy window globals.
+    for legacy_name in ("title", "status", "image", "tags", "scores", "weatherFilter", "timeFilter", "stats"):
+        assert not re.search(rf"(?<![\w.]){legacy_name}\s*\.", page)
+    assert client.get("/favicon.ico").status_code == 204
 
 
 def test_review_unknown_item_is_rejected(tmp_path):

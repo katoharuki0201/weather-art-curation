@@ -10,7 +10,8 @@ SEARCH_BATCH_SIZE = 500
 
 
 def collect_met(limit: int, include_works_on_paper: bool = False, existing_ids: set[str] | None = None, contact: str | None = None, queries: list[str] | None = None) -> CollectionResult:
-    client = RateClient(0.02)
+    search_client = RateClient(1.0)
+    detail_client = RateClient(0.02)
     search_terms = queries or DEFAULT_QUERIES["met"]
     result = CollectionResult(queries=list(search_terms))
     existing_ids, seen = existing_ids or set(), set()
@@ -20,7 +21,7 @@ def collect_met(limit: int, include_works_on_paper: bool = False, existing_ids: 
             while len(result.items) < limit:
                 if offset:
                     time.sleep(1.0)
-                payload = client.get_json("https://collectionapi.metmuseum.org/public/collection/v1.1/search", {"q": query, "hasImages": "true", "offset": offset, "limit": SEARCH_BATCH_SIZE})
+                payload = search_client.get_json("https://collectionapi.metmuseum.org/public/collection/v1.1/search", {"q": query, "hasImages": "true", "offset": offset, "limit": SEARCH_BATCH_SIZE})
                 ids = payload.get("objectIDs") or payload.get("objectIds") or []
                 if not ids:
                     break
@@ -35,7 +36,7 @@ def collect_met(limit: int, include_works_on_paper: bool = False, existing_ids: 
                         result.skipped_existing += 1
                         continue
                     try:
-                        raw = client.get_json(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{object_id}")
+                        raw = detail_client.get_json(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{object_id}")
                     except httpx.HTTPStatusError as exc:
                         status = exc.response.status_code
                         result.rejected += 1
@@ -65,5 +66,6 @@ def collect_met(limit: int, include_works_on_paper: bool = False, existing_ids: 
             if len(result.items) >= limit:
                 break
     finally:
-        client.close()
+        search_client.close()
+        detail_client.close()
     return result

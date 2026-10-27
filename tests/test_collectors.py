@@ -7,16 +7,18 @@ from curation.collect import aic, cma, met
 class FakeClient:
     responses = []
     instances = []
+    active_queue = []
 
     def __init__(self, interval, headers=None):
         self.headers = headers or {}
         self.calls = []
-        self.queue = list(self.responses)
+        if not self.instances:
+            type(self).active_queue = list(self.responses)
         self.instances.append(self)
 
     def get_json(self, url, params=None):
         self.calls.append((url, params))
-        value = self.queue.pop(0)
+        value = type(self).active_queue.pop(0)
         if isinstance(value, Exception):
             raise value
         return value
@@ -59,8 +61,11 @@ def test_met_skips_existing_without_detail_request(monkeypatch):
     result = met.collect_met(1, existing_ids={"met-1"})
     assert [item.id for item in result.items] == ["met-2"]
     assert result.skipped_existing == 1
-    assert len(FakeClient.instances[0].calls) == 2
+    assert len(FakeClient.instances) == 2
+    assert len(FakeClient.instances[0].calls) == 1
+    assert len(FakeClient.instances[1].calls) == 1
     assert "/v1.1/search" in FakeClient.instances[0].calls[0][0]
+    assert "/v1/objects/" in FakeClient.instances[1].calls[0][0]
     assert FakeClient.instances[0].calls[0][1]["offset"] == 0
     assert result.scanned == 2
 
@@ -104,6 +109,8 @@ def test_met_searches_in_500_id_pages_with_delay(monkeypatch):
     assert calls[0][1]["offset"] == 0
     assert calls[1][1]["limit"] == 500
     assert calls[1][1]["offset"] == 500
+    assert len(FakeClient.instances[1].calls) == 1
+    assert "/v1/objects/501" in FakeClient.instances[1].calls[0][0]
     assert sleeps == [1.0]
 
 

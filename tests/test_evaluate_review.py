@@ -50,6 +50,7 @@ def test_review_api(candidate, image_file, tmp_path):
     assert "grid-template-columns:repeat(2,minmax(0,1fr))" in page
     assert "@media(max-width:420px)" in page
     assert ".actions .primary{grid-column:1/-1" in page
+    assert "margin:12px 0 20px" in page
     assert "不足" not in page
     assert "showError" in page
     assert "レビュー画面を初期化できませんでした" in page

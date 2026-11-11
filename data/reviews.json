@@ -1,0 +1,1594 @@
+{
+  "cma-143602": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:37:20.802Z"
+  },
+  "cma-159501": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:48:42.786Z"
+  },
+  "met-11774": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:49:10.069Z"
+  },
+  "cma-139454": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:50:39.569Z"
+  },
+  "cma-143234": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T07:52:17.653Z"
+  },
+  "cma-152006": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:53:20.235Z"
+  },
+  "met-10560": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy",
+        "fog"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:54:15.302Z"
+  },
+  "met-10181": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:58:46.102Z"
+  },
+  "cma-143261": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T08:00:52.918Z"
+  },
+  "met-45070": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:02:03.269Z"
+  },
+  "met-51498": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:02:07.685Z"
+  },
+  "cma-151298": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T08:02:37.852Z"
+  },
+  "cma-83635": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy"
+      ],
+      "time": [
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T08:02:42.019Z"
+  },
+  "cma-149417": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:02:47.002Z"
+  },
+  "cma-171296": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T08:03:17.035Z"
+  },
+  "cma-172785": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:03:52.935Z"
+  },
+  "cma-142642": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:04:15.236Z"
+  },
+  "cma-148853": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:47.652Z"
+  },
+  "met-45072": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:44.352Z"
+  },
+  "cma-79932": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:56.518Z"
+  },
+  "cma-150165": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:22.852Z"
+  },
+  "cma-141639": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T08:07:38.202Z"
+  },
+  "cma-132908": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:53.235Z"
+  },
+  "met-48968": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:16.236Z"
+  },
+  "met-11181": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:18.319Z"
+  },
+  "met-11978": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy"
+      ],
+      "time": [
+        "day",
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T08:09:41.069Z"
+  },
+  "cma-154086": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:48.535Z"
+  },
+  "met-44895": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:49.919Z"
+  },
+  "cma-159739": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:12:55.886Z"
+  },
+  "cma-157104": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:48:34.887Z"
+  },
+  "cma-145123": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:48:37.969Z"
+  },
+  "cma-543409": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:48:44.302Z"
+  },
+  "cma-147144": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy",
+        "fog"
+      ],
+      "time": [
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T07:49:08.302Z"
+  },
+  "cma-149959": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:49:16.536Z"
+  },
+  "cma-136911": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T07:49:27.202Z"
+  },
+  "cma-172815": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:50:02.619Z"
+  },
+  "cma-143477": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day",
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T07:50:07.986Z"
+  },
+  "cma-148215": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy",
+        "fog"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:50:15.369Z"
+  },
+  "cma-148810": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:50:16.869Z"
+  },
+  "cma-106088": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "storm"
+      ],
+      "time": [
+        "day",
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T07:50:33.019Z"
+  },
+  "cma-168366": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy",
+        "fog"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:50:38.152Z"
+  },
+  "cma-122340": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:50:53.836Z"
+  },
+  "cma-109249": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:51:44.819Z"
+  },
+  "cma-98043": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:51:49.903Z"
+  },
+  "cma-124078": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:52:05.436Z"
+  },
+  "cma-136463": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:52:09.986Z"
+  },
+  "cma-144732": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy",
+        "storm"
+      ],
+      "time": [
+        "day",
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T07:52:52.552Z"
+  },
+  "cma-144967": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "day",
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T07:53:04.686Z"
+  },
+  "cma-163456": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T07:53:09.969Z"
+  },
+  "cma-139816": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:54:20.852Z"
+  },
+  "cma-166506": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy",
+        "snow"
+      ],
+      "time": [
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T07:54:39.686Z"
+  },
+  "cma-115050": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:54:59.652Z"
+  },
+  "cma-125093": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:55:11.319Z"
+  },
+  "cma-109240": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:55:18.435Z"
+  },
+  "cma-170893": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T07:55:24.102Z"
+  },
+  "cma-152197": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:55:25.486Z"
+  },
+  "cma-152765": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:55:31.436Z"
+  },
+  "cma-173180": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T07:55:42.886Z"
+  },
+  "cma-147017": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy",
+        "fog"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:55:57.236Z"
+  },
+  "cma-132931": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:56:10.202Z"
+  },
+  "cma-104197": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "snow"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:56:27.236Z"
+  },
+  "cma-122345": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:56:48.502Z"
+  },
+  "cma-154645": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:57:08.719Z"
+  },
+  "cma-135594": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:57:10.469Z"
+  },
+  "cma-148365": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy",
+        "fog"
+      ],
+      "time": [
+        "twilight",
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T07:57:26.552Z"
+  },
+  "cma-132922": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:57:29.269Z"
+  },
+  "cma-109242": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy"
+      ],
+      "time": [
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T07:57:34.936Z"
+  },
+  "cma-128363": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy",
+        "fog"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:57:44.752Z"
+  },
+  "cma-144968": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T07:57:49.019Z"
+  },
+  "cma-135593": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:57:54.085Z"
+  },
+  "cma-142579": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:57:56.186Z"
+  },
+  "cma-170891": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy",
+        "fog"
+      ],
+      "time": [
+        "twilight",
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T07:58:08.985Z"
+  },
+  "cma-132923": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:58:10.219Z"
+  },
+  "cma-132835": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:58:11.202Z"
+  },
+  "cma-146416": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy",
+        "fog"
+      ],
+      "time": [
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T07:58:36.186Z"
+  },
+  "cma-150968": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T07:58:42.852Z"
+  },
+  "cma-153351": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T07:58:47.402Z"
+  },
+  "cma-84371": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day",
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T07:59:12.718Z"
+  },
+  "cma-169673": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T08:00:27.486Z"
+  },
+  "cma-172782": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:00:28.852Z"
+  },
+  "cma-150054": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T08:00:32.601Z"
+  },
+  "cma-155043": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:00:33.885Z"
+  },
+  "cma-137331": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T08:00:43.285Z"
+  },
+  "cma-164837": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T08:00:49.552Z"
+  },
+  "cma-135483": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "day",
+        "twilight",
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T08:01:03.835Z"
+  },
+  "cma-135836": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:01:05.835Z"
+  },
+  "cma-137195": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T08:01:24.386Z"
+  },
+  "cma-134072": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T08:01:55.052Z"
+  },
+  "cma-125582": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy",
+        "fog",
+        "rain"
+      ],
+      "time": [
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T08:02:22.802Z"
+  },
+  "cma-153353": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:02:24.303Z"
+  },
+  "cma-170784": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:02:25.785Z"
+  },
+  "cma-135487": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:02:26.986Z"
+  },
+  "cma-110952": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T08:02:31.736Z"
+  },
+  "cma-156809": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:02:43.768Z"
+  },
+  "cma-149763": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:02:45.085Z"
+  },
+  "cma-156810": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:02:46.019Z"
+  },
+  "cma-132930": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:02:48.035Z"
+  },
+  "cma-153354": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:02:49.019Z"
+  },
+  "cma-153412": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:02:50.352Z"
+  },
+  "cma-145375": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:03:18.469Z"
+  },
+  "cma-97189": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T08:03:41.619Z"
+  },
+  "cma-132926": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:03:44.019Z"
+  },
+  "cma-137924": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:03:45.552Z"
+  },
+  "cma-159482": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:03:48.052Z"
+  },
+  "cma-149613": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:03:49.535Z"
+  },
+  "cma-153729": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:03:50.669Z"
+  },
+  "cma-132921": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:03:51.919Z"
+  },
+  "cma-98261": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:03:53.918Z"
+  },
+  "cma-135333": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:03:56.352Z"
+  },
+  "cma-132837": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:03:58.702Z"
+  },
+  "cma-149610": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:03:59.835Z"
+  },
+  "cma-93014": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "day",
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T08:04:09.735Z"
+  },
+  "cma-156808": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:04:12.119Z"
+  },
+  "cma-140324": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:04:12.902Z"
+  },
+  "cma-132924": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:04:14.119Z"
+  },
+  "cma-148854": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:04:16.302Z"
+  },
+  "cma-145372": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:19.985Z"
+  },
+  "cma-161781": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:04:19.103Z"
+  },
+  "cma-137921": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:04:20.335Z"
+  },
+  "cma-157228": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T08:04:37.452Z"
+  },
+  "cma-136285": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:04:39.235Z"
+  },
+  "cma-125249": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:46.402Z"
+  },
+  "cma-136666": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:48.819Z"
+  },
+  "cma-148855": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:49.869Z"
+  },
+  "cma-160137": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:50.718Z"
+  },
+  "cma-86121": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:51.569Z"
+  },
+  "cma-132929": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:52.902Z"
+  },
+  "cma-95206": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:53.885Z"
+  },
+  "cma-86109": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:54.652Z"
+  },
+  "cma-86120": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:55.469Z"
+  },
+  "cma-145374": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:56.485Z"
+  },
+  "cma-149658": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:57.302Z"
+  },
+  "cma-140323": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:58.135Z"
+  },
+  "cma-132016": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:05:59.269Z"
+  },
+  "cma-126243": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "fog",
+        "rain",
+        "storm"
+      ],
+      "time": [
+        "twilight",
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T08:06:13.969Z"
+  },
+  "cma-142278": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:16.219Z"
+  },
+  "cma-149606": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:18.385Z"
+  },
+  "cma-95207": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:19.935Z"
+  },
+  "cma-142641": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:21.002Z"
+  },
+  "cma-130940": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:21.885Z"
+  },
+  "cma-149142": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:22.669Z"
+  },
+  "cma-132920": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:23.385Z"
+  },
+  "cma-143274": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:24.219Z"
+  },
+  "cma-131335": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:24.985Z"
+  },
+  "cma-149660": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:25.785Z"
+  },
+  "cma-140078": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T08:06:32.919Z"
+  },
+  "cma-145373": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:34.119Z"
+  },
+  "cma-95208": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:36.402Z"
+  },
+  "cma-149614": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:37.802Z"
+  },
+  "cma-130361": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:38.768Z"
+  },
+  "cma-140322": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:39.653Z"
+  },
+  "cma-149109": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:40.502Z"
+  },
+  "cma-132836": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:41.502Z"
+  },
+  "cma-79569": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:42.436Z"
+  },
+  "cma-132841": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:43.469Z"
+  },
+  "cma-143776": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:45.219Z"
+  },
+  "cma-90136": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:46.119Z"
+  },
+  "cma-156183": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:55.352Z"
+  },
+  "cma-149762": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:57.502Z"
+  },
+  "cma-150701": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:58.468Z"
+  },
+  "cma-79590": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:06:59.485Z"
+  },
+  "cma-135964": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:00.502Z"
+  },
+  "cma-150533": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:01.552Z"
+  },
+  "cma-132838": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:02.585Z"
+  },
+  "cma-539840": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:03.819Z"
+  },
+  "cma-149413": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:05.102Z"
+  },
+  "cma-95087": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:06.685Z"
+  },
+  "cma-132840": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:08.002Z"
+  },
+  "cma-79579": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:09.118Z"
+  },
+  "cma-79576": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:10.618Z"
+  },
+  "cma-143772": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy"
+      ],
+      "time": [
+        "twilight"
+      ]
+    },
+    "updated_at": "2026-10-28T08:07:19.185Z"
+  },
+  "cma-90080": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:21.585Z"
+  },
+  "cma-144286": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:24.035Z"
+  },
+  "cma-150051": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T08:07:32.418Z"
+  },
+  "cma-150932": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:34.435Z"
+  },
+  "cma-153339": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:40.602Z"
+  },
+  "cma-149620": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:41.836Z"
+  },
+  "cma-113945": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:48.286Z"
+  },
+  "cma-95209": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:49.269Z"
+  },
+  "cma-173659": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:50.685Z"
+  },
+  "cma-151027": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:07:52.169Z"
+  },
+  "cma-149422": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy",
+        "fog"
+      ],
+      "time": [
+        "twilight",
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T08:08:06.719Z"
+  },
+  "cma-160947": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:08:08.886Z"
+  },
+  "cma-138360": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy",
+        "fog"
+      ],
+      "time": [
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T08:08:18.019Z"
+  },
+  "cma-146140": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:08:19.735Z"
+  },
+  "cma-86108": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:08:22.702Z"
+  },
+  "cma-152828": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:08:24.285Z"
+  },
+  "cma-153664": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:08:43.552Z"
+  },
+  "cma-149659": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:08:44.518Z"
+  },
+  "cma-152832": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:05.635Z"
+  },
+  "cma-160946": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:06.368Z"
+  },
+  "cma-152827": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:06.886Z"
+  },
+  "cma-129861": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:07.668Z"
+  },
+  "cma-141168": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:16.952Z"
+  },
+  "cma-159727": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:17.702Z"
+  },
+  "cma-151024": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:19.468Z"
+  },
+  "cma-132928": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:20.736Z"
+  },
+  "cma-160139": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:21.652Z"
+  },
+  "cma-151028": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:22.535Z"
+  },
+  "cma-130219": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:23.652Z"
+  },
+  "cma-302209": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "cloudy",
+        "fog"
+      ],
+      "time": [
+        "twilight",
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T08:09:35.885Z"
+  },
+  "cma-142571": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:38.119Z"
+  },
+  "cma-145124": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:49.286Z"
+  },
+  "cma-149662": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:09:53.369Z"
+  },
+  "cma-148244": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:10:00.502Z"
+  },
+  "cma-128392": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T08:10:05.585Z"
+  },
+  "cma-125058": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "fog",
+        "rain",
+        "storm"
+      ],
+      "time": [
+        "twilight",
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T08:10:15.652Z"
+  },
+  "cma-151035": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:10:30.452Z"
+  },
+  "cma-135310": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "night"
+      ]
+    },
+    "updated_at": "2026-10-28T08:10:37.835Z"
+  },
+  "cma-148358": {
+    "status": "rejected",
+    "tags": null,
+    "updated_at": "2026-10-28T08:10:39.719Z"
+  },
+  "cma-125234": {
+    "status": "approved",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    },
+    "updated_at": "2026-10-28T08:10:44.518Z"
+  }
+}

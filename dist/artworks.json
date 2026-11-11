@@ -1,0 +1,238 @@
+[
+  {
+    "id": "met-10181",
+    "source": "met",
+    "title": "Landscape",
+    "artist": "Ralph Albert Blakelock",
+    "date": "1885–95",
+    "image": {
+      "url": "https://images.metmuseum.org/CRDImages/ad/original/ap29.35.jpg",
+      "thumbUrl": "https://images.metmuseum.org/CRDImages/ad/web-large/ap29.35.jpg"
+    },
+    "sourceUrl": "https://www.metmuseum.org/art/collection/search/10181",
+    "credit": "The Metropolitan Museum of Art, Gift of the nieces of Harmon W. Hendricks, 1929",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    }
+  },
+  {
+    "id": "met-10560",
+    "source": "met",
+    "title": "Landscape",
+    "artist": "Kenyon Cox",
+    "date": "1883",
+    "image": {
+      "url": "https://images.metmuseum.org/CRDImages/ad/original/ap64.221.jpg",
+      "thumbUrl": "https://images.metmuseum.org/CRDImages/ad/web-large/ap64.221.jpg"
+    },
+    "sourceUrl": "https://www.metmuseum.org/art/collection/search/10560",
+    "credit": "The Metropolitan Museum of Art, Gift of Leonard Opdycke, 1964",
+    "tags": {
+      "weather": [
+        "cloudy"
+      ],
+      "time": [
+        "twilight"
+      ]
+    }
+  },
+  {
+    "id": "met-11978",
+    "source": "met",
+    "title": "Landscape",
+    "artist": "Albert Pinkham Ryder",
+    "date": "1897–98 (?)",
+    "image": {
+      "url": "https://images.metmuseum.org/CRDImages/ad/original/ap52.199.jpg",
+      "thumbUrl": "https://images.metmuseum.org/CRDImages/ad/web-large/ap52.199.jpg"
+    },
+    "sourceUrl": "https://www.metmuseum.org/art/collection/search/11978",
+    "credit": "The Metropolitan Museum of Art, Gift of Frederick Kuhne, 1952",
+    "tags": {
+      "weather": [
+        "cloudy"
+      ],
+      "time": [
+        "day",
+        "twilight"
+      ]
+    }
+  },
+  {
+    "id": "cma-152006",
+    "source": "cma",
+    "title": "Rocky, Wooded Landscape with a Dell and Weir",
+    "artist": "Thomas Gainsborough (British, 1727–1788)",
+    "date": "c. 1782–1783",
+    "image": {
+      "url": "https://openaccess-cdn.clevelandart.org/1984.59/1984.59_web.jpg",
+      "thumbUrl": "https://openaccess-cdn.clevelandart.org/1984.59/1984.59_print.jpg"
+    },
+    "sourceUrl": "https://clevelandart.org/art/1984.59",
+    "credit": "Cleveland Museum of Art, CC0",
+    "tags": {
+      "weather": [
+        "cloudy"
+      ],
+      "time": [
+        "day",
+        "twilight",
+        "night"
+      ]
+    }
+  },
+  {
+    "id": "cma-171296",
+    "source": "cma",
+    "title": "Vale of Kashmir",
+    "artist": "Robert S. Duncanson (American, 1821–1872)",
+    "date": "1867",
+    "image": {
+      "url": "https://openaccess-cdn.clevelandart.org/2014.12/2014.12_web.jpg",
+      "thumbUrl": "https://openaccess-cdn.clevelandart.org/2014.12/2014.12_print.jpg"
+    },
+    "sourceUrl": "https://clevelandart.org/art/2014.12",
+    "credit": "Cleveland Museum of Art, CC0",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "twilight"
+      ]
+    }
+  },
+  {
+    "id": "cma-151298",
+    "source": "cma",
+    "title": "Prater Landscape",
+    "artist": "Ferdinand Georg Waldmüller (Austrian, 1793–1865)",
+    "date": "c. 1831",
+    "image": {
+      "url": "https://openaccess-cdn.clevelandart.org/1983.155/1983.155_web.jpg",
+      "thumbUrl": "https://openaccess-cdn.clevelandart.org/1983.155/1983.155_print.jpg"
+    },
+    "sourceUrl": "https://clevelandart.org/art/1983.155",
+    "credit": "Cleveland Museum of Art, CC0",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    }
+  },
+  {
+    "id": "cma-143234",
+    "source": "cma",
+    "title": "Landscape with a Windmill\r\n",
+    "artist": "Jacob van Ruisdael (Dutch, 1628/29–1682)",
+    "date": "1646",
+    "image": {
+      "url": "https://openaccess-cdn.clevelandart.org/1967.19/1967.19_web.jpg",
+      "thumbUrl": "https://openaccess-cdn.clevelandart.org/1967.19/1967.19_print.jpg"
+    },
+    "sourceUrl": "https://clevelandart.org/art/1967.19",
+    "credit": "Cleveland Museum of Art, CC0",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "twilight"
+      ]
+    }
+  },
+  {
+    "id": "cma-159501",
+    "source": "cma",
+    "title": "Landscape with Peasants Dancing",
+    "artist": "David Teniers (Flemish, 1610–1690)",
+    "date": "c. 1645–50",
+    "image": {
+      "url": "https://openaccess-cdn.clevelandart.org/1996.271/1996.271_web.jpg",
+      "thumbUrl": "https://openaccess-cdn.clevelandart.org/1996.271/1996.271_print.jpg"
+    },
+    "sourceUrl": "https://clevelandart.org/art/1996.271",
+    "credit": "Cleveland Museum of Art, CC0",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "day"
+      ]
+    }
+  },
+  {
+    "id": "cma-83635",
+    "source": "cma",
+    "title": "Breton Landscape",
+    "artist": "Jan Verkade (Dutch, 1868–1946)",
+    "date": "1891–92",
+    "image": {
+      "url": "https://openaccess-cdn.clevelandart.org/2020.117/2020.117_web.jpg",
+      "thumbUrl": "https://openaccess-cdn.clevelandart.org/2020.117/2020.117_print.jpg"
+    },
+    "sourceUrl": "https://clevelandart.org/art/2020.117",
+    "credit": "Cleveland Museum of Art, CC0",
+    "tags": {
+      "weather": [
+        "cloudy"
+      ],
+      "time": [
+        "night"
+      ]
+    }
+  },
+  {
+    "id": "cma-143261",
+    "source": "cma",
+    "title": "Landscape with Saint John the Baptist",
+    "artist": "Herri met de Bles (Flemish, 1510–1572)",
+    "date": "c. 1540",
+    "image": {
+      "url": "https://openaccess-cdn.clevelandart.org/1967.20/1967.20_web.jpg",
+      "thumbUrl": "https://openaccess-cdn.clevelandart.org/1967.20/1967.20_print.jpg"
+    },
+    "sourceUrl": "https://clevelandart.org/art/1967.20",
+    "credit": "Cleveland Museum of Art, CC0",
+    "tags": {
+      "weather": [
+        "clear"
+      ],
+      "time": [
+        "day"
+      ]
+    }
+  },
+  {
+    "id": "cma-141639",
+    "source": "cma",
+    "title": "Twilight in the Wilderness",
+    "artist": "Frederic Edwin Church (American, 1826–1900)",
+    "date": "1860",
+    "image": {
+      "url": "https://openaccess-cdn.clevelandart.org/1965.233/1965.233_web.jpg",
+      "thumbUrl": "https://openaccess-cdn.clevelandart.org/1965.233/1965.233_print.jpg"
+    },
+    "sourceUrl": "https://clevelandart.org/art/1965.233",
+    "credit": "Cleveland Museum of Art, CC0",
+    "tags": {
+      "weather": [
+        "clear",
+        "cloudy"
+      ],
+      "time": [
+        "twilight"
+      ]
+    }
+  }
+]
